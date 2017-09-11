@@ -1,0 +1,27 @@
+#!/gnuplot
+clear
+reset
+
+#Labels
+set xlabel 'Number of Mesh Points with Analytical Value'
+set ylabel 'Integral Value'
+set title 'Numerical (Gauss-Legandre) vs Analytical Integral of e^2^x from [-5,5]'
+set xtics ("2" 0.2, "4" 0.8, "6" 1.4, "8" 2, "10" 2.6, "12" 3.2, "16" 3.8, "24" 4.4, )
+
+#Axis Range
+set xrange [0:5]
+set yrange [900:12000]
+
+#Style
+set boxwidth 0.2
+set style fill solid
+set ytics 500
+set grid ytics
+
+#Plot
+plot 'Problem3.dat' every 2 using 1:2 with boxes ls 1 title "Numerical", 'Problem3.dat' every 2::1 using 1:2 with boxes ls 2 title "Analytical"
+
+#Save
+save "HW3_3.gnu"
+
+#EOF
